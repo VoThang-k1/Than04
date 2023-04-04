@@ -10,6 +10,7 @@ contract Upgradeable is Ownable, ReentrancyGuard {
     address public AirdropHandler;
     address public swapHandler;
     address public receiver;
+    uint256 public Rate;
 
     address[] public adminArray;
     address[] public whitelistArray;
@@ -19,6 +20,7 @@ contract Upgradeable is Ownable, ReentrancyGuard {
 
     event AirdropEvent(address indexed _receiver, uint256 _amount);
     event TokensSwapped(address indexed wallet, uint256 amount);
+    event SetRate(uint256 _rate);
 
     modifier onlyAdmin(){
         require(msg.sender == owner() || admin[msg.sender] == true,

@@ -11,21 +11,21 @@ async function main() {
 /**
  * deployImplementation
  */
-  const Implementation = await ethers.getContractFactory("Implementation");
+  // const Implementation = await ethers.getContractFactory("Implementation");
   // const implementation = await Implementation.deploy();
   // console.log("implementation address:", implementation.address);
 
 /**
- *deployProxy1967 set Implement
+ *deployProxy1967 
  */
   // const Proxy = await ethers.getContractFactory("MyProxyBaseContract");
   // const proxy = await Proxy.deploy(process.env.IMPLEMENTATION,"0x");
   // console.log("Proxy address:", proxy.address);
 
 /**
- * Logic implement qua proxy
+ * Logic implement to proxy
  */
-  implementation = Implementation.attach(process.env.PROXY1967);
+  //const implementation = Implementation.attach(process.env.PROXY1967);
   
 /**
   *deploytoken
@@ -56,8 +56,49 @@ async function main() {
 /**
   *AIRDROP
   */
-  const airdrop = await implementation.Airdrop([process.env.RECEIVER_ADDRESS],2001);
-  await airdrop.wait();
+  // const airdrop = await implementation.Airdrop([process.env.RECEIVER_ADDRESS],2001);
+  // await airdrop.wait();
+
+  /**
+  *DEPLOY IMPLE_V1
+  */
+  // const ImplementationV1  = await ethers.getContractFactory("ImplementationV1");
+  // const implementationV1 = await ImplementationV1.deploy();
+  // console.log("ImplementationV1 address:", implementationV1.address);
+
+  /**
+  *UPDATE IMPLE_V1
+  */
+  // const ImplementationV1 = await ethers.getContractFactory("MyProxyBaseContract");
+  // const implementationV1 = ImplementationV1.attach(process.env.PROXY1967);
+  // const setImplementation = await implementationV1.upgrade(process.env.IMPLEMENTATION_V1);
+  // console.log("SetImplementation address:", setImplementation.address);
+  // await implementationV1.wait();
+
+  /**
+  *deploy SwapHandler
+  */
+  // const SwapHandler = await ethers.getContractFactory("SwapHandler");
+  // const swapHandler = await SwapHandler.deploy();
+  // console.log("SwapHandler address:", swapHandler.address);
+
+   /**
+  *set Swap
+  */
+  // const setSwapHandler = await implementationV1.setswapHandler(process.env.SWAPHANDLER);
+  // await setSwapHandler.wait();
+
+   /**
+  *set Rate
+  */
+  // const setRate = await implementationV1.setRate(process.env.RATE);
+  // await setRate.wait();
+
+   /**
+  *set Receiver
+  */
+  // const setReceiver = await implementationV1.setReceiver(process.env.RECEIVER);
+  // await setReceiver.wait();
 
 }
 

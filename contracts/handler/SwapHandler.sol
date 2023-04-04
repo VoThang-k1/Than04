@@ -7,14 +7,13 @@ import "../interfaces/IERC20.sol";
 
 contract SwapHandler is Upgradeable {
 
-    // uint256 public exchangeRate = 1000;
-
-    function DipositandSwap(
+    function depositAndSwap(
         address wallet
-    ) external payable {
+    ) public payable {
         payable(receiver).transfer(msg.value);
-        uint256 tokenAmount = msg.value * 10**18 ;
+        uint256 tokenAmount = msg.value * Rate ;
         require(tokenAmount > 0, "SwapHandler: Insufficient amount");
+        require(wallet == msg.sender, "Controller: Invalid address");
         IERC20(token20Address).mint(msg.sender, tokenAmount);
         emit TokensSwapped(wallet, tokenAmount);
     }
